@@ -1,40 +1,42 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: faahmed <faahmed@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/12/28 11:27:43 by faahmed           #+#    #+#             */
+/*   Updated: 2024/12/28 15:54:58 by faahmed          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {
+	size_t			i;
+	char			j;
+	unsigned char	*d;
+	unsigned char	*s;
 
-    unsigned char *d; // مؤشر للهدف
-    const unsigned char *s; // مؤشر للمصدر
-    size_t i; // متغير عداد
-
-    // تحويل المؤشرات إلى unsigned char* لتسهيل التعامل مع البايتات
-    d = (unsigned char *)dest;
-    s = (const unsigned char *)src;
-
-    // تحقق إذا كانت المؤشرات غير صالحة
-    if (!dest && !src) 
+	i = 0;
+	j = 1;
+	d = (unsigned char *)dest;
+	s = (unsigned char *)src;
+	if (!dest && !src)
+		return (NULL);
+	if (dest > src)
 	{
-        return NULL;
-    }
-
-    if (d > s && d < s + n)
-	{ // حالة وجود تداخل، النسخ للخلف
-        i = n;
-        while (i > 0) 
-		{
-            i--;
-            d[i] = s[i];
-        }
-    } else 
-	{ // لا يوجد تداخل، النسخ للأمام
-        i = 0;
-        while (i < n) 
-		{
-            d[i] = s[i];
-            i++;
-        }
-    }
-
-    return dest;
+		j = -1;
+		d += n - 1;
+		s += n - 1;
+	}
+	while (i < n)
+	{
+		*d = *s;
+		d += j;
+		s += j;
+		i++;
+	}
+	return (dest);
 }
-

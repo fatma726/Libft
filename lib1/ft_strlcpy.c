@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: faahmed <faahmed@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/12/28 11:28:57 by faahmed           #+#    #+#             */
+/*   Updated: 2024/12/28 15:57:03 by faahmed          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 size_t	ft_strlcpy(char *dest, const char *src, size_t size)
@@ -7,7 +19,7 @@ size_t	ft_strlcpy(char *dest, const char *src, size_t size)
 	i = 0;
 	if (size != 0)
 	{
-		while (src [i] != '\0' && i < (size - 1)) ///nul termnated 
+		while (src [i] != '\0' && i < (size - 1))
 		{
 			dest[i] = src[i];
 			i++;
@@ -16,21 +28,3 @@ size_t	ft_strlcpy(char *dest, const char *src, size_t size)
 	}
 	return (ft_strlen(src));
 }
-
-
-// #include <stdio.h>
-// #include "libft.h"
-
-// int main()
-// {
-//     char src[] = "Hello, world!";
-//     char dest[8];
-
-//     size_t result = ft_strlcpy(dest, src, sizeof(dest));
-
-//     printf("Source: %s\n", src);
-//     printf("Destination: %s\n", dest);
-//     printf("Length of source: %zu\n", result);
-
-//     return 0;
-// }
